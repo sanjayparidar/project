@@ -2,7 +2,7 @@ module.exports.getAll= [
 		{
 			productName : "Sony",
 			productPrice : 25000,
-			imgUrl : "images/2.jpg"
+			imgUrl : "images/1.png"
 		},
 		{
 			productName : "HTC",
