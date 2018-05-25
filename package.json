@@ -1,0 +1,19 @@
+{
+  "name": "app.js",
+  "version": "1.1.1",
+  "description": "testing",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1","start":"node app.js"
+  },
+  "keywords": [
+    "testing"
+  ],
+  "author": "mohit",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~4.16.3",
+    "ejs": "~2.6.1",
+    "body-parser": "~1.18.3"
+  }
+}
