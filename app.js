@@ -1,15 +1,31 @@
 var express=require("express");
 var app=express();
 
-app.use(require("./controller/default"));
-
-app.use(express.static(__dirname+"/public/"));
-
 var bodyparser=require("body-parser");
-app.use(bodyparser());
+
+var session = require("express-session");
+
+var cookieparser = require("cookie-parser");
+
 
 app.set("view engine","ejs");
 app.set("views","view");
+
+
+
+
+app.use(express.static(__dirname+"/public/"));
+
+app.use(bodyparser());
+
+app.use(session({secret:"secret"}));
+
+app.use(cookieparser());
+
+app.use(require("./controller/default"));
+
+
+
 
 
 

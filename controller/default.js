@@ -16,4 +16,15 @@ router.use("/signup",require("./signup"));
 
 router.use("/admin",require("./admin"));
 
+router.use("/user",function(req,res,next){
+        
+        if(!req.session.is_user_logged_in)
+        {
+        	res.redirect("/login");
+        }
+
+        next();
+
+}, require("./user"));
+
 module.exports=router;
