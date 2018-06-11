@@ -2,13 +2,13 @@
 <br>
   <div class="container-fluid">
 
-           	<form class="">
+           	<form action="/admin" method="post">
 
            		<div class="form-group">
 
            			<label>UserName</label>
 
-           			<input type="text" name="UserName" class="form-control" placeholder="UserName">
+           			<input type="text" name="username" class="form-control" placeholder="UserName" >
 
            		</div>
 
@@ -16,13 +16,16 @@
 
            			<label>Password</label>
 
-           			<input type="Password" name="Password" placeholder="Password" class="form-control">
+           			<input type="Password" name="password" placeholder="Password" class="form-control">
 
            		</div>
 
-              <br>
 
-              <button class="btn btn-success">Login</button>
+               <%= message %>
+               
+               <br>  <br>
+
+              <button class="btn btn-success" type="submit">Login</button>
            		
            	</form>
            	

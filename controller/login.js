@@ -7,12 +7,12 @@ var url="mongodb://localhost:27017";
 
 router.get("/", function(req,res){
 
-var pagedata={title:"login",pagename:"login/index"};
-	res.render("layout",pagedata);
+  var pagedata={title:"login",pagename:"login/index",massage:req.flash("msg")};
+	 res.render("layout",pagedata);
 
-	res.render("layout",pagedata);
+	 res.render("layout",pagedata);
 
-	});
+	 });
 
 router.post("/", function(req,res){
 	// console.log(req.body);
@@ -27,6 +27,7 @@ router.post("/", function(req,res){
            if(result.length==0)
 
            {
+            req.flash("msg","invalid username and password");
            	res.redirect("/login");
            }
 
@@ -42,10 +43,11 @@ router.post("/", function(req,res){
 
            		req.session.is_user_logged_in=true;
 
-           		res.redirect("/user");}
+           		res.redirect("/");}
 
            		else 
            		{
+                req.flash("msg","invalid password")
            			res.redirect("/login");
            		}
            	}

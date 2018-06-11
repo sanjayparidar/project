@@ -1,13 +1,7 @@
 var express=require("express");
 var router=express.Router();
 
-
-
-var mongodb=require("mongodb").MongoClient;
-
-var url="mongodb://localhost:27017";
-
-
+var user =require("../model/user");
 
 router.get("/",function(req,res){
    
@@ -16,44 +10,17 @@ router.get("/",function(req,res){
   
 });
 
-router.post("/", function(req,res){
-
-      console.log("comming -------------");
-      var obj=req.body;
-      // console.log(obj);
-
-      mongodb.connect(url,function(err,client){
-
-       if (err){
-
-          console.log("error",err);
-          return;
-       }
-       
-          var db=client.db("promohit");
-
-          db.collection("user").insert(obj,function(err,result){
-
-             
-          if(err){
-
-               console.log("error404", err);
-               return;
-          }
-
-          console.log(result);
-
-          res.redirect("/login");
-
-          });
-
-      });
 
 
+router.post("/", function(req, res){
+  user.insert(req.body, function(err, result){
+    console.log(result);
+    res.redirect('/login');
+  });
 });
 
 
 
 
-
 module.exports=router;
+

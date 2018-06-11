@@ -1,26 +1,25 @@
 var express=require("express");
 var router=express.Router();
 
-var cate=require("../model/category");
+var category=require("../model/category");
 
 var product=require("../model/product");
 
 
 
-
-
-
 router.get("/", function(req,res){
 
-// console.log("-------------",cate);
-// console.log("-------------",product);
-	var pagedata={title:"home",pagename:"home/index", category: cate.getAll, product: product.getAll};
-	res.render("layout",pagedata);
-	// console.log(pagedata);
-
-
+	
+product.find(function(err, result){
+		var productresult = result;
+		category.find(function(err, result){
+			var cateresult = result;
+			var pagedata = {title : "Home Page", pagename : "home/index", catedata : cateresult, prodata : productresult};
+			res.render("layout", pagedata);
+		});
 	});
 
+});
 
 
 module.exports=router;

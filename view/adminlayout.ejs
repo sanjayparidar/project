@@ -18,9 +18,25 @@
     <body style="background-color: #797B7B">
           <header style="background-color:#B1B4B5;">
 	       
-	           <div class="container-fluid" style="border-bottom:1px solid #000">
-	           	<h1 align="center">ADMINISTRATION</h1>
-	           </div>
+	           <nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Administrator Area</a>
+    </div>
+    <% if(session.is_admin_logged_in){ %>
+
+    
+    <ul class="nav navbar-nav">
+      <li><a href="/admin/Dashborad">Dashborad</a></li>
+      <li><a href="/admin/addcategory">Add Category</a></li>
+      <li><a href="/admin/addproduct">Add Product</a></li>
+      <li><a href="/admin/viewcategory">View Catgory</a></li>
+      <li><a href="/admin/viewproduct">View Product</a></li>
+      <li><a href="/admin/logout">Logout</a></li>
+    </ul>
+  </div>
+    <% } %>
+</nav>
 
             </header>
 
