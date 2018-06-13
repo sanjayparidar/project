@@ -6,7 +6,9 @@
   		<th>S.No.</th>
       <th>Product Name</th>
       <th>Product Price</th>
-  		<th>Product Discount</th>
+      <th>Product Discount</th>
+      <th>Category Name</th>
+  		<th>Product Image</th>
   		<th>Edit</th>
   		<th>Delete</th>
   	</tr>
@@ -16,8 +18,13 @@
         <td><%= z.name %></td>
         <td><%= z.price %></td>
   			<td><%= z.discount %></td>
-  			<td><a href="#" class="btn btn-sm btn-info">Edit</a></td>
-  			<td><a href="viewproduct/delete?id=<%=z._id%>" data-toggle="modal" class="btn btn-sm btn-danger">Delete</a></td>
+        <td><%= z.category %></td>
+
+  			<td><img src = "/productimage/<%= z.image %>" height="50" width="50"></td>
+
+        <td><a href="viewproduct/update/<%= z._id %>" class="btn btn-sm btn-info">Edit</a></td>
+
+  			<td><a href="viewproduct/delete/<%=z._id%>" data-toggle="modal" class="btn btn-sm btn-danger">Delete</a></td>
 
   		</tr>
  <% }) %>
