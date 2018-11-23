@@ -7,7 +7,7 @@ var category=require("../model/category");
 router.get("/", function(req, res){
 
 	product.find(function(err, result){
-		console.log(result);
+		// console.log(result);
 		var pagedata = { title : "View Category", pagename : "admin/viewproduct", data : result};
 		res.render("adminlayout", pagedata);
 	});

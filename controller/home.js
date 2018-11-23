@@ -9,6 +9,14 @@ var product=require("../model/product");
 
 router.get("/", function(req,res){
 
+	console.log("first");
+setImmediate(function(){
+    console.log("second");
+});
+console.log("third");
+
+
+
 	
 product.find(function(err, result){
 		var productresult = result;

@@ -23,7 +23,9 @@ router.post("/", function(req, res){
 	var p = req.body.password;
 	MongoClient.connect(url, function(err, client){
 		var db =  client.db("promohit");
-		db.collection('admin').find({ username : u}).toArray(function(err, result){
+		db.collection('admin').find({username:u}).toArray(function(err, result){
+
+			console.log(result)
 			if(result.length==0)
 			{
 				req.flash("msg", "invalid Username and Password");
@@ -34,7 +36,7 @@ router.post("/", function(req, res){
 				if(result[0].password==p)
 				{
 					req.session.adminid=result[0]._id;
-					req.session.admin_name=result[0].name;
+					req.session.admin_name=result[0].fullname;
 					req.session.is_admin_logged_in=true;
 					res.redirect("/admin/dashboard");
 				}

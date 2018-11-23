@@ -13,6 +13,7 @@ router.get("/",function(req,res){
 
 
 router.post("/", function(req, res){
+	console.log(req.body)
   user.insert(req.body, function(err, result){
     console.log(result);
     res.redirect('/login');

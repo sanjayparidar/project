@@ -18,10 +18,12 @@ router.get("/",function(req,res){
 
 
 router.post("/",function(req,res){
-
+     
 	var file = req.files.image;
 	var newname = changename(file.name);
 	var filepath = path.resolve("public/productimage/"+newname);
+	// var filepath=path.dirname("public/"+newname);
+	console.log(filepath)
 		file.mv(filepath, function(err){
 		if(err){
 			console.log(err);
@@ -43,14 +45,17 @@ router.post("/",function(req,res){
 router.post("/update", function(req, res){
 	
 	var id = req.body.id;
-	var image = req.body.image;
+	
 	delete req.body.id;
-	delete req.body.image;
+	
 
-	if(req.files)
+	if(req.files.image)
 	{
+		var image = req.body.image;
+		delete req.body.image;
 		var file = req.files.image;
 		var newname = changename(file.name);
+		// var filepath=app.use(express.static(__dirname+"/public/"+newname));
 		var filepath = path.resolve("public/productimage/"+newname);
 		file.mv(filepath);
 		req.body.image = newname;
@@ -58,6 +63,7 @@ router.post("/update", function(req, res){
 		fs.unlinkSync(oldfilepath);
 
 	}
+
 	product.update({_id : Mongo.ObjectId(id)}, req.body, function(err, result){
 		res.redirect("/admin/viewproduct")
 	});

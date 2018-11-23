@@ -1,28 +1,27 @@
 var express=require("express");
 var router=express.Router();
+var user =require("../model/user");
 
-var MongoClient=require("mongodb").MongoClient;
-
-var url="mongodb://localhost:27017";
 
 router.get("/", function(req,res){
 
   var pagedata={title:"login",pagename:"login/index",massage:req.flash("msg")};
 	 res.render("layout",pagedata);
 
-	 res.render("layout",pagedata);
+	 
 
 	 });
 
 router.post("/", function(req,res){
 	// console.log(req.body);
     var u=req.body.username
+    console.log(u)
     var p=req.body.password
 
-    MongoClient.connect(url,function(err,client){
+   
 
-    	var db = client.db("promohit")
-    	db.collection("user").find({fullname:u}).toArray(function(err,result){
+    	
+    	user.find({email:u}, function(err, result){
            console.log(result);
            if(result.length==0)
 
@@ -56,6 +55,6 @@ router.post("/", function(req,res){
     	});
     });
 
-});
+
 
 module.exports=router;
