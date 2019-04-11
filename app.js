@@ -58,6 +58,7 @@ app.use(require("./controller/default"));
 app.listen(process.env.PORT||1994,function(){
 
 	console.log("server start");
+	console.log("hello")
 });
 
 
